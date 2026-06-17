@@ -1,0 +1,20 @@
+# Environment — never commit secrets
+.env
+
+# NotFair runtime data (business-context.json, personas — filled by audit skills)
+.notfair/
+
+# Generated ad assets (large binaries — optional, commit if you want assets in repo)
+# ad-assets/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
