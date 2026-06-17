@@ -2,13 +2,15 @@
 
 ## Project Overview
 
-This repository contains the full Claude Ads stack — 5 skill packs, 50 skills, 14 agents,
-and 54+ reference files for paid advertising across Google, Meta, TikTok, YouTube, LinkedIn,
+This repository contains the full Claude Ads stack — 6 skill packs, 51 skills, 15 agents,
+and 55+ reference files for paid advertising across Google, Meta, TikTok, YouTube, LinkedIn,
 Microsoft, Apple, and Amazon. Includes the core AgriciDaniel/claude-ads Tier 4 skill (22 sub-skills,
-10 agents, 250+ audit checks), plus 4 additional skill packs installed on 2026-06-17:
+10 agents, 250+ audit checks), plus 5 additional skill packs installed on 2026-06-17:
 krusemediallc/arcads-claude-code (UGC video + image ads), Hainrixz/claude-ads (onboarding wizard +
 social publishing), mathiaschu/meta-ads-analyzer (Breakdown Effect framework), TheMattBerman/meta-ads-kit
-(daily Meta monitoring loop), and zubair-trabzada/ai-ads-claude (video scripts, hooks, funnel architecture).
+(daily Meta monitoring loop), zubair-trabzada/ai-ads-claude (video scripts, hooks, funnel architecture),
+and the custom `/ads produce` full-pipeline orchestrator (brand DNA → strategy → copy → premium prompts →
+visual generation → video scripts → format validation — all in one command).
 
 ## Installed Skill Packs
 
@@ -95,7 +97,27 @@ ads-report-pdf/SKILL.md           # Professional PDF report generation
 Agents: ads-audience.md, ads-competitive.md, ads-funnel.md
 ```
 
-## Full Command Reference (50 skills)
+### Custom: Full-Pipeline Orchestrator (built 2026-06-17)
+1 master skill + 1 premium prompt-builder agent
+
+```
+ads-produce/SKILL.md              # End-to-end pipeline: DNA → strategy → copy →
+                                  # premium prompts → images → video scripts →
+                                  # format validation — all from one URL
+Agent: ads-prompt-builder.md      # Cinematography-grade prompt construction
+                                  # (9-component framework: shot type, subject,
+                                  # environment, lighting, color, style, brand
+                                  # cues, technical specs, negative constraints)
+```
+
+**What makes `/ads produce` different from running individual commands:**
+The `ads-prompt-builder` agent combines exact brand hex colors, persona insights
+from the strategy, platform-specific composition rules, and photographic
+references into 150-350 word prompts that a creative director at BBDO could
+hand directly to a production team — ensuring every generated image is on-brand,
+on-strategy, and platform-compliant in one pipeline.
+
+## Full Command Reference (51 skills)
 
 ### Core Ads Commands
 | Command | Purpose |
@@ -127,6 +149,7 @@ Agents: ads-audience.md, ads-competitive.md, ads-funnel.md
 | `/ads photoshoot` | Product photography in 5 styles |
 | `/ads update <platform>` | Refresh references with last 30 days of platform changes |
 | `/ads publish` | Publish creatives to 14+ social networks via Zernio |
+| **`/ads produce <url>`** | **Full pipeline: DNA → strategy → copy → premium prompts → images → video scripts → format validation. One command, everything.** |
 
 ### Strategy & Analysis Commands (ai-ads-claude pack)
 | Command | Purpose |
