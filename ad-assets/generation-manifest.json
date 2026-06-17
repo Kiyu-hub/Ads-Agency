@@ -1,0 +1,72 @@
+{
+  "generated_at": "2026-06-17T16:29:00Z",
+  "brand": "Clasikal Homes",
+  "brand_profile": "../brand-profile.json",
+  "model": "marketing_studio_image",
+  "total_credits_used": 8,
+  "assets": [
+    {
+      "id": "ea0893bb-c2da-4564-8d76-745d45831512",
+      "platform": "meta",
+      "format": "feed-square",
+      "aspect_ratio": "1:1",
+      "dimensions": "1024x1024",
+      "concept": "hero-dining-room",
+      "use": "Meta Feed / Advantage+ Sales Campaign hero creative",
+      "suggested_headline": "Elevate Every Corner.",
+      "suggested_cta": "Shop the Collection",
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FGl1z8oYwDKd0eILKBH7EeezCV/hf_20260617_162505_ea0893bb-c2da-4564-8d76-745d45831512.png",
+      "status": "completed",
+      "quality_score": 8
+    },
+    {
+      "id": "ecf1b977-07a2-48d3-9ca3-f2fa5f1d7f15",
+      "platform": "meta",
+      "format": "feed-portrait",
+      "aspect_ratio": "4:5",
+      "dimensions": "928x1152",
+      "concept": "living-room-lifestyle",
+      "use": "Meta Feed preferred format / ASC carousel card",
+      "suggested_headline": "A Home Reflecting You.",
+      "suggested_cta": "Explore Now",
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FGl1z8oYwDKd0eILKBH7EeezCV/hf_20260617_162606_ecf1b977-07a2-48d3-9ca3-f2fa5f1d7f15.png",
+      "status": "completed",
+      "quality_score": 9
+    },
+    {
+      "id": "8a5fcba2-6c46-4580-afda-3ff0d6058b0e",
+      "platform": "tiktok",
+      "format": "vertical",
+      "aspect_ratio": "9:16",
+      "dimensions": "768x1376",
+      "concept": "bedroom-transformation",
+      "use": "TikTok Smart+ / Meta Reels / Stories",
+      "suggested_headline": "Modern. Unique. Yours.",
+      "suggested_cta": "Shop Now",
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FGl1z8oYwDKd0eILKBH7EeezCV/hf_20260617_162749_8a5fcba2-6c46-4580-afda-3ff0d6058b0e.jpeg",
+      "status": "completed",
+      "quality_score": 9
+    },
+    {
+      "id": "2a832e98-1fe9-4d5b-8ee0-5ff5ba7e18ad",
+      "platform": "google",
+      "format": "landscape",
+      "aspect_ratio": "16:9",
+      "dimensions": "1376x768",
+      "concept": "panoramic-living-room",
+      "use": "Google PMax landscape image / YouTube Display / Google Display Network",
+      "suggested_headline": "Luxury Home Decor in Ghana",
+      "suggested_cta": "Shop Clasikal Homes",
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FGl1z8oYwDKd0eILKBH7EeezCV/hf_20260617_162908_2a832e98-1fe9-4d5b-8ee0-5ff5ba7e18ad.jpeg",
+      "status": "completed",
+      "quality_score": 8
+    }
+  ],
+  "next_steps": [
+    "Add brand text overlays (royal blue #2345C8, white headline) before uploading to ad platforms",
+    "Crop Google landscape (1376x768) to exactly 1200x628 for PMax spec compliance",
+    "Upload Meta assets to Ads Manager → Creative Hub for review",
+    "Use 4:5 portrait (ecf1b977) as primary ASC creative — highest quality score",
+    "Produce 3-5 more carousel cards from similar prompts for full Meta ASC creative pool"
+  ]
+}
