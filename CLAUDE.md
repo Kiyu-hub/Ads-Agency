@@ -2,71 +2,107 @@
 
 ## Project Overview
 
-This repository contains **Claude Ads**, a Tier 4 Claude Code skill for comprehensive
-paid advertising analysis across all major platforms. It follows the Agent Skills open
-standard and the 3-layer architecture (directive, orchestration, execution). 22 sub-skills,
-10 agents (6 audit + 4 creative), and 12 industry templates cover Google, Meta, YouTube, LinkedIn,
-TikTok, Microsoft, Apple, and Amazon Ads with 250+ weighted audit checks, plus cross-platform
-attribution and server-side tracking deep dives.
+This repository contains the full Claude Ads stack — 5 skill packs, 50 skills, 14 agents,
+and 54+ reference files for paid advertising across Google, Meta, TikTok, YouTube, LinkedIn,
+Microsoft, Apple, and Amazon. Includes the core AgriciDaniel/claude-ads Tier 4 skill (22 sub-skills,
+10 agents, 250+ audit checks), plus 4 additional skill packs installed on 2026-06-17:
+krusemediallc/arcads-claude-code (UGC video + image ads), Hainrixz/claude-ads (onboarding wizard +
+social publishing), mathiaschu/meta-ads-analyzer (Breakdown Effect framework), TheMattBerman/meta-ads-kit
+(daily Meta monitoring loop), and zubair-trabzada/ai-ads-claude (video scripts, hooks, funnel architecture).
 
-## Architecture
+## Installed Skill Packs
+
+### Pack 1: AgriciDaniel/claude-ads (core)
+22 sub-skills, 10 agents, 250+ checks, 26 references
 
 ```
-claude-ads/
-  CLAUDE.md                          # Project instructions (this file)
-  ads/                               # Main orchestrator skill
-    SKILL.md                         # Entry point, routing table, core rules
-    references/                      # On-demand knowledge files (25 files)
-  scripts/                           # Python execution scripts (repo root; installed under <SKILL_BASE>/ads/scripts/)
-  skills/                            # 22 specialized sub-skills (Wave 2)
-    ads-audit/SKILL.md              # Full multi-platform audit
-    ads-google/SKILL.md             # Google Ads deep analysis (incl. AI Max)
-    ads-meta/SKILL.md               # Meta/Facebook Ads (Andromeda + GEM + Lattice + Entity-ID predictor)
-    ads-youtube/SKILL.md            # YouTube Ads (Demand Gen, Shorts, CTV)
-    ads-linkedin/SKILL.md           # LinkedIn Ads analysis
-    ads-tiktok/SKILL.md             # TikTok Ads (post-USDS)
-    ads-microsoft/SKILL.md          # Microsoft/Bing Ads analysis
-    ads-apple/SKILL.md              # Apple Ads (AdAttributionKit, dual attribution)
-    ads-amazon/SKILL.md             # Amazon Ads (Sponsored Products/Brands/Display, ACOS/TACOS)
-    ads-attribution/SKILL.md        # Cross-platform attribution audit
-    ads-server-side-tracking/SKILL.md # sGTM, CAPI Gateway, dedup, hashing
-    ads-creative/SKILL.md           # Creative quality + Entity-ID retrieval scoring
-    ads-landing/SKILL.md            # Landing page analysis
-    ads-budget/SKILL.md             # Budget allocation optimization
-    ads-plan/SKILL.md               # Strategic ad planning by industry
-    ads-competitor/SKILL.md         # Competitor ad research
-    ads-math/SKILL.md               # PPC financial calculator
-    ads-test/SKILL.md               # A/B test design
-    ads-dna/SKILL.md                # Brand DNA extraction
-    ads-create/SKILL.md             # Campaign concepts and copy briefs
-    ads-generate/SKILL.md           # AI ad image generation
-    ads-photoshoot/SKILL.md         # Product photography in 5 styles
-  agents/                            # 10 agents (6 audit + 4 creative)
-    audit-google.md                # Google Ads audit agent
-    audit-meta.md                  # Meta Ads audit agent
-    audit-creative.md              # Creative quality agent
-    audit-tracking.md              # Conversion tracking agent
-    audit-budget.md                # Budget analysis agent
-    audit-compliance.md            # Compliance verification agent
-    creative-strategist.md         # Campaign concept strategist
-    visual-designer.md             # AI image generation orchestrator
-    copy-writer.md                 # Headlines, CTAs, primary text
-    format-adapter.md              # Asset dimension validation
-  tests/                             # 41-test pytest eval harness (Wave 2)
-    conftest.py                    # Shared fixtures
-    fixtures/check-catalog.yaml    # 209-check canonical catalog
-    routing/                       # Trigger → skill snapshot tests
-    audit/                         # Catalog coverage + scoring math tests
-    scripts/                       # SSRF + sanitize_error regression tests
-  install.sh / install.ps1          # Cross-platform installers
-  uninstall.sh / uninstall.ps1      # Cross-platform uninstallers
+ads/SKILL.md                       # Main orchestrator
+ads/references/ (26 files)         # Benchmarks, specs, audit guides
+ads-audit, ads-google, ads-meta, ads-youtube, ads-linkedin, ads-tiktok
+ads-microsoft, ads-apple, ads-amazon, ads-attribution, ads-server-side-tracking
+ads-creative, ads-landing, ads-budget, ads-plan, ads-competitor, ads-math
+ads-test, ads-dna, ads-create, ads-generate, ads-photoshoot
+Agents: audit-google, audit-meta, audit-creative, audit-tracking, audit-budget,
+        audit-compliance, creative-strategist, visual-designer, copy-writer, format-adapter
 ```
 
-## Commands
+### Pack 2: krusemediallc/arcads-claude-code (UGC video + image ads)
+5 skills for AI video/image creative via Arcads API (Seedance 2, Sora 2, Veo 3.1)
+Requires: `ARCADS_API_KEY` in `.env`
 
+```
+arcads-external-api/SKILL.md      # Seedance, Sora2, Veo, Kling, UGC video
+chatgpt-image-ad/SKILL.md         # GPT-image-2 static ads (text-heavy, UI-mimicry)
+nano-banana-image-ad/SKILL.md     # Gemini/Nano Banana ads (photoreal, lifestyle)
+image-ad-clone/SKILL.md           # Reverse-engineer existing ads into templates
+generate-youtube-thumbnail/SKILL.md # High-CTR YouTube thumbnails
+Shared: 37-template prompt library, meta-ad-builder deploy scripts
+```
+
+### Pack 3: Hainrixz/claude-ads (onboarding wizard + social publishing)
+4 new sub-skills + 29 new reference files + 4 new scripts
+
+```
+ads-start/SKILL.md                # First-run wizard (context, OAuth, profile.json)
+ads-next/SKILL.md                 # Continuous coach (Quick Wins ranking)
+ads-update/SKILL.md               # Refresh references with 30-day platform changes
+ads-publish/SKILL.md              # Publish creatives to 14+ networks via Zernio
+New refs: benchmarks-cross, bidding-google/meta/tiktok, setup-meta/google/tiktok,
+          tracking-cross/meta/google/tiktok, changelog-30d files (3 platforms)
+New scripts: profile.py, zernio_publish.py, run_update.py, ads_sources.py
+```
+
+### Pack 4: mathiaschu/meta-ads-analyzer (Breakdown Effect framework)
+1 expert skill + 9 official Meta reference docs
+
+```
+meta-ads-analyzer/SKILL.md        # Expert Meta diagnosis; Breakdown Effect lens
+meta-ads-analyzer/references/
+  breakdown_effect.md             # The Breakdown Effect (read first)
+  learning_phase.md               # ~50 optimization events needed
+  ad_relevance_diagnostics.md     # Quality/Engagement/Conversion rankings
+  auction_overlap.md, pacing.md, bid_strategies.md, ad_auctions.md
+  core_concepts.md, performance_fluctuations.md
+```
+
+### Pack 5: TheMattBerman/meta-ads-kit (daily Meta monitoring loop)
+5 skills + meta-ads-copilot agent
+
+```
+meta-ads/SKILL.md                 # Daily checks: bleeders, winners, fatigue
+ad-creative-monitor/SKILL.md      # CTR decay, frequency creep tracking
+budget-optimizer/SKILL.md         # Spend efficiency, budget shift recommendations
+ad-copy-generator/SKILL.md        # Copy matched to specific creatives
+ad-upload/SKILL.md                # Upload with dry-run guardrails
+Agent: meta-ads-copilot.md        # Orchestrates all 5 for daily workflow
+```
+
+### Pack 6: zubair-trabzada/ai-ads-claude (video scripts + funnel architecture)
+11 new sub-skills + 3 new agents
+
+```
+ads-strategy/SKILL.md             # 5-agent full strategy (Ad Readiness Score 0-100)
+ads-quick/SKILL.md                # 60-second ad readiness snapshot
+ads-video/SKILL.md                # 15s/30s/60s video scripts with shot-by-shot
+ads-hooks/SKILL.md                # 20 scroll-stopping hooks by psychological angle
+ads-funnel/SKILL.md               # TOFU→MOFU→BOFU→Retargeting architecture
+ads-copy/SKILL.md                 # 10+ copy variations (PAS, AIDA, BAB, 4Ps)
+ads-keywords/SKILL.md             # Google keyword strategy with match types
+ads-audience/SKILL.md             # 5-7 audience personas with targeting params
+ads-competitors/SKILL.md          # Competitor ad intelligence + swipe file
+ads-testing/SKILL.md              # A/B test roadmap with 90-day calendar
+ads-report-pdf/SKILL.md           # Professional PDF report generation
+Agents: ads-audience.md, ads-competitive.md, ads-funnel.md
+```
+
+## Full Command Reference (50 skills)
+
+### Core Ads Commands
 | Command | Purpose |
 |---------|---------|
-| `/ads audit` | Full multi-platform audit with 6 parallel agents (Wave 2 sub-skills run standalone; see notes) |
+| `/ads start` | First-run wizard — context, OAuth, profile.json setup |
+| `/ads next` | Continuous coach — rank Quick Wins after each audit |
+| `/ads audit` | Full multi-platform audit (6 parallel agents) |
 | `/ads google` | Google Ads deep analysis (incl. AI Max) |
 | `/ads meta` | Meta/Facebook Ads analysis (Andromeda + GEM + Lattice) |
 | `/ads youtube` | YouTube Ads analysis |
@@ -74,9 +110,9 @@ claude-ads/
 | `/ads tiktok` | TikTok Ads analysis |
 | `/ads microsoft` | Microsoft/Bing Ads analysis |
 | `/ads apple` | Apple Ads (AdAttributionKit, dual attribution) |
-| `/ads amazon` | Amazon Ads (Sponsored Products/Brands/Display, ACOS/TACOS) — *Wave 2* |
-| `/ads attribution` | Cross-platform attribution audit (AAK, GA4, Consent Mode V2, MMP) — *Wave 2* |
-| `/ads tracking` | Server-side tracking pipeline audit (sGTM, CAPI Gateway, dedup, hashing) — *Wave 2* |
+| `/ads amazon` | Amazon Ads (ACOS/TACOS, Sponsored Products/Brands/Display) |
+| `/ads attribution` | Cross-platform attribution audit (AAK, GA4, Consent Mode V2) |
+| `/ads tracking` | Server-side tracking audit (sGTM, CAPI Gateway, dedup) |
 | `/ads creative` | Creative quality and fatigue assessment |
 | `/ads landing` | Landing page conversion analysis |
 | `/ads budget` | Budget allocation optimization |
@@ -89,6 +125,42 @@ claude-ads/
 | `/ads create` | Generate campaign concepts + copy briefs → `campaign-brief.md` |
 | `/ads generate` | Generate AI ad images from brief → `ad-assets/` |
 | `/ads photoshoot` | Product photography in 5 styles |
+| `/ads update <platform>` | Refresh references with last 30 days of platform changes |
+| `/ads publish` | Publish creatives to 14+ social networks via Zernio |
+
+### Strategy & Analysis Commands (ai-ads-claude pack)
+| Command | Purpose |
+|---------|---------|
+| `/ads strategy <url>` | 5-agent full strategy + Ad Readiness Score 0–100 |
+| `/ads quick <url>` | 60-second ad readiness snapshot |
+| `/ads audience <url>` | 5–7 audience personas with targeting parameters |
+| `/ads competitors <url>` | Competitor ad intelligence + swipe file |
+| `/ads copy <platform>` | 10+ copy variations (PAS, AIDA, BAB, 4Ps) |
+| `/ads hooks` | 20 scroll-stopping hooks by psychological angle |
+| `/ads video <product>` | 15s/30s/60s video scripts with shot-by-shot direction |
+| `/ads funnel <url>` | TOFU→MOFU→BOFU→Retargeting architecture |
+| `/ads keywords` | Google keyword strategy with match types + ad groups |
+| `/ads testing <campaign>` | A/B testing roadmap with 90-day calendar |
+| `/ads report-pdf` | Professional PDF strategy report |
+
+### Arcads Creative Commands (krusemediallc/arcads pack)
+| Command | Purpose |
+|---------|---------|
+| `arcads-external-api` skill | UGC video via Seedance 2, Sora 2, Veo 3.1, Kling |
+| `chatgpt-image-ad` skill | GPT-image-2 static ads (text-heavy, UI-mimicry style) |
+| `nano-banana-image-ad` skill | Gemini/Nano Banana photoreal & lifestyle ads |
+| `image-ad-clone` skill | Reverse-engineer existing ads into reusable templates |
+| `generate-youtube-thumbnail` skill | High-CTR YouTube thumbnails with reference images |
+
+### Daily Meta Management Commands (meta-ads-kit pack)
+| Command | Purpose |
+|---------|---------|
+| `meta-ads` skill | Daily 5-question check: bleeders, winners, fatigue |
+| `ad-creative-monitor` skill | CTR decay and frequency creep tracking |
+| `budget-optimizer` skill | Spend efficiency + budget shift recommendations |
+| `ad-copy-generator` skill | Copy matched to specific creative images |
+| `ad-upload` skill | Upload ads with dry-run guardrails |
+| `meta-ads-analyzer` skill | Expert diagnosis with Breakdown Effect framework |
 
 ## Development Rules
 
